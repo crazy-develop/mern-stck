@@ -18,14 +18,14 @@ function App() {
     setError(null);
     try {
       // Use relative URL (proxied by Vite) with full URL fallback if needed
-      const res = await fetch("/api/hello").catch(() => 
+      const res = await fetch("/api/hello").catch(() =>
         fetch("http://localhost:3000/api/hello")
       );
-      
+
       if (!res.ok) {
         throw new Error(`Server returned status: ${res.status}`);
       }
-      
+
       const data = await res.json();
       setMessage(data.message);
       setTimestamp(data.timestamp ? new Date(data.timestamp).toLocaleTimeString() : "");
@@ -86,16 +86,16 @@ function App() {
                 status === "connected"
                   ? "#10B981"
                   : status === "error"
-                  ? "#EF4444"
-                  : "#F59E0B",
+                    ? "#EF4444"
+                    : "#F59E0B",
             }}
           />
           <span style={styles.badgeText}>
             {status === "connected"
               ? "Backend Connected"
               : status === "error"
-              ? "Backend Offline"
-              : "Checking Connection..."}
+                ? "Backend Offline"
+                : "Checking Connection..."}
           </span>
         </div>
         <h1 style={styles.title}>MERN Stack Connection Portal</h1>
